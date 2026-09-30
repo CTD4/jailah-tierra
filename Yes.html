@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Here's to that pretty smile</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="yes-page">
+    <main class="container yes-container">
+      <h1 class="header_text">YES SHE WILL CHAT OMG!!!</h1>
+      <div class="smile-photo-frame" tabindex="0" aria-label="Jailah's pretty smile">
+        <img class="smile-photo" src="JAI%205.jpg" alt="Jailah smiling" />
+      </div>
+      <p class="smile-message">I want to keep that pretty smile on your face all the time starting October 10, 2026! 💜</p>
+      <div class="gif_container celebration-gif">
+        <img src="https://i.postimg.cc/wTDG30TB/yes.gif" alt="Cute animated celebration" />
+      </div>
+      <a class="btn itinerary-button" id="yesButton" href="itinerary.html">View the itinerary 💜</a>
+      <script>
+          const yesButton = document.getElementById("yesButton");
+          function popHearts() {
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+            const rect = yesButton.getBoundingClientRect();
+            for (let i = 0; i < 12; i++) {
+              const heart = document.createElement("span");
+              heart.className = "hover-heart";
+              heart.textContent = "♥";
+              heart.setAttribute("aria-hidden", "true");
+              heart.style.left = `${rect.left + rect.width / 2}px`;
+              heart.style.top = `${rect.top + rect.height / 2}px`;
+              heart.style.setProperty("--heart-x", `${(Math.random() - 0.5) * 180}px`);
+              heart.style.setProperty("--heart-y", `${-70 - Math.random() * 110}px`);
+              heart.style.setProperty("--heart-turn", `${(Math.random() - 0.5) * 70}deg`);
+              heart.style.fontSize = `${16 + Math.random() * 14}px`;
+              document.body.appendChild(heart);
+              heart.addEventListener("animationend", () => heart.remove(), { once: true });
+              setTimeout(() => heart.remove(), 1400);
+            }
+          }
+          yesButton.addEventListener("pointerenter", popHearts);
+          yesButton.addEventListener("focus", popHearts);
+          yesButton.addEventListener("pointerdown", (event) => {
+            if (event.pointerType === "touch") popHearts();
+          });
+
+      </script>
+      <nav class="back-navigation" aria-label="Back navigation"><a class="back-button" href="index.html">← Back</a></nav>
+  </main>
+  </body>
+</html>

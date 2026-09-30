@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>A date with Jailah</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="main-page">
+    <main class="photo-layout">
+      <img class="side-photo photo-top-left" src="JAI%201.png" alt="Jailah, photo 1" />
+      <img class="side-photo photo-bottom-left" src="JAI%202.png" alt="Jailah, photo 2" />
+      <img class="side-photo photo-top-right" src="JAI%203.png" alt="Jailah, photo 3" />
+      <img class="side-photo photo-bottom-right" src="JAI%204.png" alt="Jailah, photo 4" />
+    <div class="container">
+      <div>
+        <h1 class="header_text">Jailah, Will you go on a Date with me?</h1>
+      </div>
+      <p>
+        <a href="https://www.instagram.com/jailahtierraa/">CLICK ME TO SEE WHO IS REALLY PRETTY!</a>
+      </p>
+       
+      <div class="gif_container">
+        <img
+          src="https://i.postimg.cc/pdNqPxx1/milk-and-mocha-cute.gif"
+          alt="Cute animated illustration"
+        />
+      </div>
+      <div class="buttons">
+        <button class="btn" id="yesButton" onclick="nextPage()">Yes</button>
+        <button
+          class="btn"
+          id="noButton"
+          onmouseover="moveButton()"
+          onclick="moveButton()"
+        >
+          No
+        </button>
+
+        <script>
+          function nextPage() {
+            window.location.href = "Yes.html";
+          }
+
+          const yesButton = document.getElementById("yesButton");
+          function popHearts() {
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+            const rect = yesButton.getBoundingClientRect();
+            for (let i = 0; i < 12; i++) {
+              const heart = document.createElement("span");
+              heart.className = "hover-heart";
+              heart.textContent = "♥";
+              heart.setAttribute("aria-hidden", "true");
+              heart.style.left = `${rect.left + rect.width / 2}px`;
+              heart.style.top = `${rect.top + rect.height / 2}px`;
+              heart.style.setProperty("--heart-x", `${(Math.random() - 0.5) * 180}px`);
+              heart.style.setProperty("--heart-y", `${-70 - Math.random() * 110}px`);
+              heart.style.setProperty("--heart-turn", `${(Math.random() - 0.5) * 70}deg`);
+              heart.style.fontSize = `${16 + Math.random() * 14}px`;
+              document.body.appendChild(heart);
+              heart.addEventListener("animationend", () => heart.remove(), { once: true });
+              setTimeout(() => heart.remove(), 1400);
+            }
+          }
+          yesButton.addEventListener("pointerenter", popHearts);
+          yesButton.addEventListener("focus", popHearts);
+          yesButton.addEventListener("pointerdown", (event) => {
+            if (event.pointerType === "touch") popHearts();
+          });
+
+          function moveButton() {
+            var x =
+              Math.random() *
+              (window.innerWidth -
+                document.getElementById("noButton").offsetWidth);
+            var y =
+              Math.random() *
+              (window.innerHeight -
+                document.getElementById("noButton").offsetHeight);
+            document.getElementById("noButton").style.position = "fixed";
+            document.getElementById("noButton").style.margin = "0";
+            document.getElementById("noButton").style.left = `${x}px`;
+            document.getElementById("noButton").style.top = `${y}px`;
+          }
+        </script>
+      </div>
+    </div>
+    </main>
+  </body>
+</html>
